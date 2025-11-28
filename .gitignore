@@ -1,31 +1,43 @@
-# Python
+# ---- Python ----
 __pycache__/
 *.py[cod]
 *.pyo
 *.pyd
+*.so
 
-# Virtual environment
+# ---- Virtual Environment ----
 venv/
+ENV/
 env/
 
-# Environment variables
-.env
-
-# SQLite DB
+# ---- Django / Project ----
+*.log
 db.sqlite3
 
-# Logs
-*.log
-
-# Media uploads
+# Static & media generated files
+staticfiles/
+staticfiles_build/
 media/
 
-# Static build files
-staticfiles/
+# ---- Environment Variables ----
+.env
+*.env
 
-# VSCode
+# ---- IDE / Editors ----
 .vscode/
+.idea/
+*.code-workspace
 
-# System files
+# ---- OS Files ----
 .DS_Store
 Thumbs.db
+
+# ---- Python packaging ----
+*.egg-info/
+*.egg
+build/
+dist/
+
+# ---- Cache ----
+*.cache/
+*.pytest_cache/
