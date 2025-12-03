@@ -21,6 +21,28 @@ This project is built with the following technologies:
 
 ---
 
+## 📂 Project Structure
+
+```text
+AI_Cybercrime/
+├── cybercrime_platform/    # Project configuration (settings, urls)
+├── dashboard/              # Main application logic
+│   ├── migrations/         # Database migrations
+│   ├── static/             # CSS, JS, and images
+│   ├── templates/          # HTML templates
+│   ├── models.py           # Database models
+│   ├── views.py            # Application views & API logic
+│   └── urls.py             # App-specific URL routing
+├── media/                  # User-uploaded evidence files
+├── venv/                   # Virtual environment (not in repo)
+├── .env                    # Environment variables (create manually)
+├── db.sqlite3              # Default database
+├── manage.py               # Django command-line utility
+└── requirement.txt         # Project dependencies
+```
+
+---
+
 ## ✅ Key Features
 
 ### 🛡️ For Victims (Users)
@@ -73,22 +95,30 @@ To get a local copy up and running, follow these steps.
 
 3. **Install dependencies**
     ```sh
-    pip install -r requirements.txt
+    pip install -r requirement.txt
     ```
 
 4. **Set up Environment Variables**
-    * Create a `.env` file in the project root.
-    * Add your Google API Key and database credentials:
-        ```env
-        SECRET_KEY=your_secret_key_here
-        GOOGLE_API_KEY=your_api_key_here
+    > [!IMPORTANT]
+    > This project requires sensitive API keys to function. These are NOT included in the repository for security.
 
-        DB_ENGINE=postgresql
-        DB_NAME=cybercrime_db
-        DB_USER=postgres
-        DB_PASSWORD=your_db_password
-        DB_HOST=localhost
-        DB_PORT=5432
+    * Create a file named `.env` in the project root directory.
+    * Add the following keys (replace with your actual values):
+        ```env
+        # Django Security
+        SECRET_KEY=your_generated_secret_key_here
+        DEBUG=True
+
+        # AI Configuration (Required)
+        GOOGLE_API_KEY=your_gemini_api_key_here
+
+        # Database Configuration (Optional - Defaults to SQLite if omitted)
+        # DB_ENGINE=postgresql
+        # DB_NAME=cybercrime_db
+        # DB_USER=postgres
+        # DB_PASSWORD=your_db_password
+        # DB_HOST=localhost
+        # DB_PORT=5432
         ```
 
 5. **Apply database migrations**
