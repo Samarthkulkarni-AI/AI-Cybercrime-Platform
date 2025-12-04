@@ -466,6 +466,8 @@ def update_case_status(request, case_id):
 
 def chatbot_response(request):
     if request.method == 'POST':
+        if not settings.GOOGLE_API_KEY:
+            return JsonResponse({'response': "System Error: GOOGLE_API_KEY is missing. Please check your .env file."})
         try:
             system_prompt = (
                 "You are 'CyberShield AI', a compassionate and helpful AI assistant for a cybercrime reporting platform. "
@@ -497,6 +499,8 @@ def chatbot_response(request):
 
 def predict_case_type(request):
     if request.method == 'POST':
+        if not settings.GOOGLE_API_KEY:
+            return JsonResponse({'error': 'System Error: GOOGLE_API_KEY is missing.'}, status=500)
         try:
             data = json.loads(request.body)
             description = data.get('description', '')
@@ -549,6 +553,8 @@ def predict_case_type(request):
 
 def generate_description(request):
     if request.method == 'POST':
+        if not settings.GOOGLE_API_KEY:
+            return JsonResponse({'error': 'System Error: GOOGLE_API_KEY is missing.'}, status=500)
         try:
             data = json.loads(request.body)
             rough_draft = data.get('rough_draft', '')
